@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Work+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --forest: #1f3d2b;
+  --moss: #4f7a3a;
+  --leaf: #eef3e6;
+  --marigold: #e0a526;
+  --ink: #18241c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Work Sans', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--leaf);
+}
+
+/* ---------- Landing page ---------- */
+
+.landing-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  /* Background image for the Paradise Nursery landing page */
+  background-image: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 0.4s ease;
+}
+
+.landing-page.fade-out {
+  opacity: 0;
+}
+
+.background-image {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(20, 40, 27, 0.88) 0%, rgba(20, 40, 27, 0.55) 60%, rgba(20, 40, 27, 0.25) 100%);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 68rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.landing_content {
+  color: #fff;
+}
+
+.landing_content h1 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  margin: 0 0 1rem;
+}
+
+.divider {
+  width: 4rem;
+  height: 3px;
+  background: var(--marigold);
+  margin: 1.25rem 0;
+}
+
+.landing_content p {
+  font-size: 1.15rem;
+  margin: 0 0 2rem;
+  color: #e3ecd8;
+}
+
+.get-started-button {
+  font: inherit;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 0.9rem 2.2rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--marigold);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.get-started-button:hover {
+  background: #f0b83a;
+}
+
+.get-started-button:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--marigold);
+  outline-offset: 3px;
+}
+
+.product-list-container {
+  min-height: 100vh;
+}
+
+.product-list-container.visible {
+  animation: appear 0.35s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 800px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-page,
+  .product-list-container.visible {
+    transition: none;
+    animation: none;
+  }
+}
